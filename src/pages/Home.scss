@@ -1,0 +1,33 @@
+
+.prod-view {
+    padding:10px 50px;
+    .item-detail{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        gap:10px;
+        height: 400px;
+        padding:20px;
+        box-shadow: 0 0 10px 2px grey;
+        background-color: white;
+        margin:20px;
+        .item-image{
+            width: 50%;
+            height: 75%;
+        }
+         .price{
+            font-size: 1.5em;
+           }
+         button{
+            border-radius: 5px;
+            background-color: green;
+            border:green;
+            color:white
+        }
+         &:hover{
+            transform:translate(0%,5%);
+         }
+    }
+}
