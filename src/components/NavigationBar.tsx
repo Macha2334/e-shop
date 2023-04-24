@@ -3,14 +3,19 @@ import {Form,Button} from "react-bootstrap"
 import './commonStyles.scss'
 import { useSelector } from "react-redux";
 import CartPopOver from "../pages/Cart/CartPopOver";
+import { useNavigate } from "react-router";
 const NavigationBar=()=>{
     
+    const navigate=useNavigate();
+    const handleNavigation=(nav:string)=>{
+        navigate(nav);
+    }
     const cartItems=useSelector((state:any)=>state.cart);
     return(
         <Navbar bg="dark" expand="lg" variant="dark" collapseOnSelect id="nav-bar">
             <Container className="row">
                 <Navbar.Brand className="col-sm-3">
-                    <Nav.Link href="home">
+                    <Nav.Link onClick={()=>handleNavigation("/home")}>
                     <img className="brand-img" src={process.env.PUBLIC_URL+'brand.png'}/>
                     E - Shop
                     </Nav.Link>
@@ -18,8 +23,8 @@ const NavigationBar=()=>{
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className="col-sm-1" />
                 <Navbar.Collapse className="col-sm-5">
                     <Nav>
-                        <Nav.Link href="home" >Home</Nav.Link>
-                        <Nav.Link href="orders">Orders</Nav.Link>
+                        <Nav.Link onClick={()=>handleNavigation("/home")} >Home</Nav.Link>
+                        <Nav.Link onClick={()=>handleNavigation("/orders")}>Orders</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 <Form className="d-flex col-sm-3 justify-content-around">
