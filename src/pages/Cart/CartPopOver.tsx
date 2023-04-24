@@ -1,15 +1,19 @@
 import { useState } from "react";
-import { Popover,Button,Modal } from "react-bootstrap";
+import { Popover,Button,Modal, Alert } from "react-bootstrap";
 import {FaShoppingCart} from "react-icons/fa"
 import {FaTrash} from "react-icons/fa"
 import { useDispatch } from "react-redux";
-import { removeFromCart } from "./cartSlice";
+import { removeFromCart,clearCart } from "./cartSlice";
 import { prodDataType } from "../../types/productDataType";
 import  './Cart.scss'
 
 const CartPopOver =(props:any)=>{
     const [open,setOpen] = useState(false);
     const dispatch= useDispatch();
+    const handlePlaceOrder=()=>{
+        setOpen(false);
+        dispatch(clearCart());
+    }
     const totalOrderPrice=
         props.items.length >0  ? props.items.map(
             (item:prodDataType)=>item.price).reduce(
@@ -36,7 +40,7 @@ const CartPopOver =(props:any)=>{
                     <div className="total-value">{`Total Order Price: $ ${totalOrderPrice} `}</div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button>Place Order</Button>
+                    <Button onClick={handlePlaceOrder}>Place Order</Button>
                 </Modal.Footer>
             </Modal>
         </>
