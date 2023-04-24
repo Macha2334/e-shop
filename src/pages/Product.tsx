@@ -19,7 +19,7 @@ const Product = (props:{data:prodDataType}) =>{
                 </Popover>
                 )
     return(
-        <div className="col-sm-4">
+        <div className="col-sm-3">
             <div className="item-detail">
                 <img src={props.data.image} className="item-image" alt={props.data.title}/>
                 <div>{props.data.title}</div>
