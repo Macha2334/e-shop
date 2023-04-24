@@ -1,6 +1,6 @@
 import {Route,Routes} from "react-router-dom"
 import Home from "../pages/Home"
-import Cart from "../pages/Cart"
+import Cart from "../pages/Cart/Cart"
 import Orders from "../pages/Orders"
 import NotFound from "../pages/NotFound"
 import withRoutLayout from "./withRouteLayout"
