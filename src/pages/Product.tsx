@@ -5,14 +5,20 @@ import {OverlayTrigger, Popover} from "react-bootstrap"
 import {useState} from "react"
 import './Home.scss'
 import {FaStar} from "react-icons/fa"
+import { useNavigate } from "react-router";
 
 const Product = (props:{data:prodDataType}) =>{
+    const navigate=useNavigate();
     const [added,setAdded] = useState(false);
     const dispatch=useDispatch();
     const handleAddProduct =()=>{
         //setAdded(true);
         dispatch(addToCart(props.data));
     }
+    const handleProdClick=()=>{
+        navigate('/product/'+props.data.id,{replace:true})
+    }
+    
     const popover=(
                 <Popover >
                     <Popover.Header></Popover.Header>
@@ -23,8 +29,8 @@ const Product = (props:{data:prodDataType}) =>{
         <div className="col-sm-3">
             <div className="item-detail">
                 <img src={props.data.image} className="item-image" alt={props.data.title}/>
-                <div>{props.data.title}</div>
-                
+                <a className="item-title" onClick={handleProdClick}>{props.data.title}</a>
+
                 <div className="price">Price:${props.data.price}</div>
                 <OverlayTrigger trigger="click"  overlay={popover} rootClose>
                     <button onClick={handleAddProduct}>Add to Cart</button>

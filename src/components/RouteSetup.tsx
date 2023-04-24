@@ -4,12 +4,14 @@ import Home from "../pages/Home"
 import Orders from "../pages/Orders"
 import NotFound from "../pages/NotFound"
 import withRoutLayout from "./withRouteLayout"
+import ProductView from "../pages/ProductView"
 const RouteSetp = () =>{
     return(
         <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="home" element={<Home/>}/>
             <Route path="orders" element={<Orders/>}/>
+            <Route path="product/:prodId" element={<ProductView/>}/>
             <Route path="*" element={<NotFound/>}/>
         </Routes> 
     )
