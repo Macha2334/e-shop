@@ -19,7 +19,6 @@ const NavigationBar=()=>{
                 <Navbar.Collapse className="col-sm-5">
                     <Nav>
                         <Nav.Link href="home" >Home</Nav.Link>
-                        <Nav.Link href="cart">Cart</Nav.Link>
                         <Nav.Link href="orders">Orders</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

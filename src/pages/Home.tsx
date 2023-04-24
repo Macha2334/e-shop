@@ -22,7 +22,7 @@ useEffect(()=>{
     },[])
     
     return(
-        <>
+        <div className="home-page">
             <NavigationBar/>
             <Alert><h2>Super Summer Deals! up to 60% Off!!</h2></Alert>
             <div className="row prod-view">
@@ -32,7 +32,7 @@ useEffect(()=>{
                 </>
             )}
             </div>
-        </>
+        </div>
     )
 }
 export default Home;
