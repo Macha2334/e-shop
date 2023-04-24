@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import {OverlayTrigger, Popover} from "react-bootstrap"
 import {useState} from "react"
 import './Home.scss'
+import {FaStar} from "react-icons/fa"
 
 const Product = (props:{data:prodDataType}) =>{
     const [added,setAdded] = useState(false);
@@ -27,6 +28,7 @@ const Product = (props:{data:prodDataType}) =>{
                 <OverlayTrigger trigger="click"  overlay={popover} rootClose>
                     <button onClick={handleAddProduct}>Add to Cart</button>
                 </OverlayTrigger>
+                <div> {props.data.rating.rate} <FaStar/>  {`(${props.data.rating.count})`}</div>
             </div>
         </div>
     )
