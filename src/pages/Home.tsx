@@ -1,16 +1,15 @@
 import NavigationBar from "../components/NavigationBar";
 import withRoutLayout from "../components/withRouteLayout";
 import { useEffect,useState } from "react";
-import { useSelector } from "react-redux/es/hooks/useSelector";
 import './Home.scss';
 import {prodDataType} from "../types/productDataType"
 import { Alert } from "react-bootstrap";
 import Product from './Product'
-
+import {useSelector} from "react-redux"
 
 const Home = () =>{
 const [data,setData] = useState<prodDataType[]>([]);
-
+const cartItems=useSelector((state:any)=>state.cart);
 
 useEffect(()=>{
     //call the products API
@@ -29,7 +28,7 @@ useEffect(()=>{
             <div className="row prod-view">
             {data?.map((item:prodDataType,indx:any)=>
                 <>
-                    <Product {...item}/>
+                    <Product {...{data:item}}/>
                 </>
             )}
             </div>

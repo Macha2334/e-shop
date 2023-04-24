@@ -6,7 +6,7 @@ interface Props{
     }
 
 const withRoutLayout = (props:any) =>{
-  console.log(props)
+  //console.log(props)
     return(
         <div style={{display:"flex", flexDirection:"column"}}>
           <NavigationBar/>

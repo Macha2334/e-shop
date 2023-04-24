@@ -1,5 +1,5 @@
 
-export interface prodDataType{
+export type prodDataType={
     id: number,
     title: string,
     price: number,

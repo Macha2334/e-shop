@@ -11,3 +11,14 @@ body{
     position: sticky;
     top:0;
 }
+.search-btn{
+    color:white;
+    background-color: blue;
+}
+.cart-icon{
+    color:white;
+    svg{
+        height: 35px;
+        width: 35px;
+    }
+}
