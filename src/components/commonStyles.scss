@@ -7,6 +7,11 @@ body{
     background-color: aquamarine;
     padding:20px;
 }
+@media screen and (max-width:992px){
+    .prod-view {
+        padding:0px;
+    }
+}
 #nav-bar{
     position: sticky;
     top:0;

@@ -24,6 +24,7 @@ const Product = (props:{data:prodDataType}) =>{
             <div className="item-detail">
                 <img src={props.data.image} className="item-image" alt={props.data.title}/>
                 <div>{props.data.title}</div>
+                
                 <div className="price">Price:${props.data.price}</div>
                 <OverlayTrigger trigger="click"  overlay={popover} rootClose>
                     <button onClick={handleAddProduct}>Add to Cart</button>
