@@ -30,7 +30,7 @@ const NavigationBar=()=>{
                     </Nav>
                 </Navbar.Collapse>
                 <div className="col-sm-5 sc-container">
-                    <SearchItems prods={allItems}/>
+                    <SearchItems/>
                     <CartPopOver items={cartItems}/>
                 </div>
                 

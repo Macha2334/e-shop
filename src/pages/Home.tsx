@@ -7,10 +7,11 @@ import { Alert } from "react-bootstrap";
 import Product from './Product'
 import {useSelector,useDispatch} from "react-redux"
 import { getProducts,setProducts } from "../redux/productsSlice";
+import { setFilterProducts } from "../redux/productsFilterSlice";
 
 const Home = () =>{
 const [data,setData] = useState<prodDataType[]>([]);
-const prodItems=useSelector((state:any)=>state.products);
+const prodItems=useSelector((state:any)=>state.productFilter);
 console.log(prodItems)
 const dispatch=useDispatch();
 useEffect(()=>{
@@ -20,6 +21,7 @@ useEffect(()=>{
             .then(res=>res.json())
             .then(json=>{
                 dispatch(setProducts(json));
+                dispatch(setFilterProducts(json));
             });
         
     },[])

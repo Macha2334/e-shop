@@ -2,25 +2,25 @@ import {createSlice} from "@reduxjs/toolkit"
 import { prodDataType } from "../types/productDataType";
 const initialCart:prodDataType[]=[];
 
-const prodSlice=createSlice(
+const prodFilterSlice=createSlice(
     {
-        name:"products",
+        name:"productFilter",
         initialState:initialCart,
         reducers:{
-            setProducts(state,action) {
-                //console.log('payload',action.payload);
+            setFilterProducts(state,action) {
+                console.log('payload',action.payload);
                 return [...action.payload]
                 //state.push(action.payload)
             },
-            getProducts(state,action) {
+            getFilterProducts(state,action) {
                 return state.filter((item)=> item.id !== action.payload.id)
             },
-            resetProducts(state){
+            resetFilterProducts(state){
                 return state.filter((item:prodDataType)=>false)
             }
         }
 
     }
 )
-export const {setProducts,getProducts,resetProducts} = prodSlice.actions;
-export default prodSlice.reducer;
+export const {setFilterProducts,getFilterProducts,resetFilterProducts} = prodFilterSlice.actions;
+export default prodFilterSlice.reducer;
