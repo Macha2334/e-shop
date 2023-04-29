@@ -22,7 +22,7 @@ const CartPopOver =(props:any)=>{
         
     return(
         <>
-            <div className="cart-icon" onClick={()=>setOpen(true)}><FaShoppingCart/><span className="badge">{props.items.length}</span></div>
+            <div className="cart-icon" onClick={()=>setOpen(true)}><FaShoppingCart/><sup>{props.items.length}</sup></div>
             <Modal show={open} onHide={()=>setOpen(false)}>
                 <Modal.Header closeButton> Cart Details</Modal.Header>
                 <Modal.Body>{props.items.map((item:any)=>{

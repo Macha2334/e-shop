@@ -1,10 +1,12 @@
+@import './variables.scss';
+
 .brand-img{
     width:50px;
     height: 50px;
     margin-right:10px;
 }
 body{
-    background-color: aquamarine;
+    background-color: $base-color;
     padding:20px;
 }
 @media screen and (max-width:992px){
@@ -19,17 +21,71 @@ body{
 }
 .search-btn{
     color:white;
-    background-color: blue;
+    cursor: pointer;
 }
 .cart-icon{
     color:white;
+    cursor: pointer;
     svg{
         height: 35px;
         width: 35px;
+    }
+    &:focus{
+        border:2px solid white;
+        border-radius: 10px;
+        padding: 5px;
+        cursor: pointer;
     }
 }
 .home-page{
     display: flex;
     flex-direction: column;
     gap:10px;
+}
+.sc-container{
+    display: flex;
+    justify-content: space-between;
+    color:white;
+}
+.search-bar{
+    display: flex;
+    justify-content: center;
+    height: 38px;
+    gap:5px;
+    svg{
+        height: 38px;
+    }
+}
+.nav-container{
+    gap: 5px;
+    margin-bottom: 10px;
+}
+.search-list{
+    background-color: white;
+    margin:0 auto;
+    position:absolute;
+    top:50px;
+    color:blue;
+    list-style-type: none;
+    padding:10px;
+    overflow: auto;
+    max-height: 80vh;
+    border-radius: 5px;
+    li{
+        padding:5px;
+        margin-bottom: 5px;
+        box-shadow:  0px 0px 5px $base-color;
+    }
+}
+
+@media screen and (max-width:768px){
+    .navBar{
+        display: flex;
+        justify-content:space-between;
+    }
+    .search-list{
+        top:110px;
+        padding: 5px;
+        height: 60vh;
+    }
 }

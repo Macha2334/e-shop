@@ -3,7 +3,6 @@ import './Home.scss'
 import { useState,useEffect } from 'react';
 import {FaStar} from "react-icons/fa"
 import {useParams,useHref} from "react-router-dom"
-import { useSelector } from 'react-redux';
 import { prodDataType } from '../types/productDataType';
 import NavigationBar from '../components/NavigationBar';
 
@@ -31,7 +30,7 @@ const ProductView = () =>{
     const [data,setData]=useState<data_type>(initialState);
     const params=useParams();
     //const data=useSelector((state:any)=>state.cart.find((item:any)=>item.id==params.id))
-    console.log(params.prodId)
+    //console.log(params.prodId)
     useEffect(()=>{
         setData({...data,loading:true})
         fetch(`https://fakestoreapi.com/products/${params.prodId}`)

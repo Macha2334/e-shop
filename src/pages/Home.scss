@@ -1,4 +1,4 @@
-
+@import '../components/variables.scss';
 .prod-view {
     padding:10px 50px;
     .prodview-item-detail{
@@ -22,7 +22,7 @@
         gap:10px;
         height: 300px;
         padding:20px;
-        box-shadow: 0 0 10px 2px grey;
+        box-shadow: 0 0 10px 2px $box-shadow-color;
         background-color: white;
         margin:20px 0px;
         .item-image{
@@ -39,7 +39,8 @@
             color:white
         }
          &:hover{
-            transform:translate(0%,5%);
+            //transform:translate(0%,5%);
+            transform:scale(1.1,1.1)
          }
     }
 }

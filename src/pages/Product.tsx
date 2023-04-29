@@ -8,11 +8,11 @@ import {FaStar} from "react-icons/fa"
 import { useNavigate } from "react-router";
 
 const Product = (props:{data:prodDataType}) =>{
+    //console.log('inside products-',props.data);
     const navigate=useNavigate();
     const [added,setAdded] = useState(false);
     const dispatch=useDispatch();
     const handleAddProduct =()=>{
-        //setAdded(true);
         dispatch(addToCart(props.data));
     }
     const handleProdClick=()=>{
