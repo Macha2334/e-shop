@@ -12,6 +12,9 @@
             width: 300px;
             height: 400px;
         }
+        svg{
+            color:$rating-star-color
+         }
     }
     .item-detail{
         display: flex;
@@ -41,6 +44,9 @@
          &:hover{
             //transform:translate(0%,5%);
             transform:scale(1.1,1.1)
+         }
+         svg{
+            color:$rating-star-color
          }
     }
 }

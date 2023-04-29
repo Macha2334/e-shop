@@ -16,7 +16,7 @@ const Product = (props:{data:prodDataType}) =>{
         dispatch(addToCart(props.data));
     }
     const handleProdClick=()=>{
-        navigate('/product/'+props.data.id,{replace:true})
+        navigate(`/product/${props.data.id}`,{replace:true})
     }
     
     const popover=(
