@@ -58,7 +58,7 @@ const CartPopOver =(props:any)=>{
                                 <td></td>
                                 <td></td>
                                 <td>Total</td>
-                                <td>{totalOrderPrice}</td>
+                                <td>{formatNumber(totalOrderPrice)}</td>
                                 <td>{"60%"}</td>
                                 <td>{formatNumber(totalOrderPrice * 0.6)}</td>
                             </tr>

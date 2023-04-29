@@ -20,9 +20,9 @@ const Product = (props:{data:prodDataType}) =>{
     }
     
     const popover=(
-                <Popover >
+                <Popover className="cart-add-alert" >
                     <Popover.Header></Popover.Header>
-                    <Popover.Body><div className="cart-add-success">Added to Cart</div></Popover.Body>
+                    <Popover.Body><div className="cart-add-success">Added to Cart, click on Cart to view/proceed further.</div></Popover.Body>
                 </Popover>
                 )
     return(

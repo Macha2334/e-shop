@@ -56,11 +56,14 @@
         padding:5px 10px;
     }
 }
-.cart-add-success{
-    font-size: large;
-    color:white;
+.cart-add-alert{
     background-color: green;
+    .cart-add-success{
+        font-size: large;
+        color:white;
+    }
 }
+
 .item-title{
     font-weight: 500;
 }
