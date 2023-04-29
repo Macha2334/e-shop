@@ -42,7 +42,7 @@ const Search = (props:Props) =>{
         return (
             <ul className="search-list">
                 {filteredData.map(
-                    (item:any)=><li className="search-ls-item">{item.title}</li>
+                    (item:any)=><option className="search-ls-item">{item.title}</option>
                 )}
             </ul>
         )

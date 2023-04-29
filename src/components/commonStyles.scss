@@ -24,11 +24,18 @@ body{
     cursor: pointer;
 }
 .cart-icon{
-    color:white;
+    color:#e5df22;
     cursor: pointer;
     svg{
-        height: 35px;
-        width: 35px;
+        height: 50px;
+        width: 50px;
+    }
+    sup{
+        color: white;
+        position: relative;
+        left: -20px;
+        font-weight: 900;
+        font-size: 1rem;
     }
 }
 
@@ -40,6 +47,7 @@ body{
 .sc-container{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     color:white;
 }
 .search-bar{
@@ -66,7 +74,7 @@ body{
     overflow: auto;
     max-height: 80vh;
     border-radius: 5px;
-    li{
+    .search-ls-item{
         padding:5px;
         margin-bottom: 5px;
         box-shadow:  0px 0px 5px $base-color;
