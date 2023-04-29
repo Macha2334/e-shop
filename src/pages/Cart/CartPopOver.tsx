@@ -9,6 +9,7 @@ import Table from "react-bootstrap/Table";
 import { useMemo } from "react";
 import {formatNumber} from "../../Utils/Utils"
 import  './Cart.scss'
+import { it } from "node:test";
 
 const CartPopOver =(props:any)=>{
     const [open,setOpen] = useState(false);
@@ -33,7 +34,7 @@ const CartPopOver =(props:any)=>{
             <Modal show={open} onHide={()=>setOpen(false)}>
                 <Modal.Header closeButton> Cart Details</Modal.Header>
                 <Modal.Body>
-                    <Table striped>
+                    { props.items.length > 0 ? (<Table striped>
                         <thead>
                             <th>#</th>
                             <th>Item</th>
@@ -41,6 +42,7 @@ const CartPopOver =(props:any)=>{
                             <th>MRP</th>
                             <th>Discount</th>
                             <th>Price</th>
+                            <th></th>
                         </thead>
                         <tbody>
                             {props.items.map((item:prodDataType,index:number)=>{
@@ -51,6 +53,7 @@ const CartPopOver =(props:any)=>{
                                     <td>{formatNumber(item.price)}</td>
                                     <td>{"60%"}</td>
                                     <td>{formatNumber(item.price * 0.6)}</td>
+                                    <td><FaTrash onClick={()=>dispatch(removeFromCart(item))}/></td>
                                 </tr>)
                                 
                             })}
@@ -61,13 +64,18 @@ const CartPopOver =(props:any)=>{
                                 <td>{formatNumber(totalOrderPrice)}</td>
                                 <td>{"60%"}</td>
                                 <td>{formatNumber(totalOrderPrice * 0.6)}</td>
+                                <td><FaTrash onClick={()=>dispatch(clearCart())}/></td>
                             </tr>
                         </tbody>
-                    </Table>
+                    </Table>): "You have Nothing in the Cart"}
                 </Modal.Body>
                 <Modal.Footer>
-                    <div className="savedMsg">{`You have Saved $${formatNumber(totalOrderPrice*0.4)}`}</div>
-                    <Button onClick={handlePlaceOrder}>Place Order</Button>
+                    { props.items.length > 0 &&
+                        <>
+                            <div className="savedMsg">{`You have Saved $${formatNumber(totalOrderPrice*0.4)}`}</div>
+                            <Button onClick={handlePlaceOrder}>Place Order</Button>
+                        </>
+                    }
                 </Modal.Footer>
             </Modal>
         </>
