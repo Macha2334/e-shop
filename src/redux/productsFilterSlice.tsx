@@ -8,7 +8,7 @@ const prodFilterSlice=createSlice(
         initialState:initialCart,
         reducers:{
             setFilterProducts(state,action) {
-                console.log('payload',action.payload);
+                //console.log('payload',action.payload);
                 return [...action.payload]
                 //state.push(action.payload)
             },
