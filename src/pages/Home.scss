@@ -35,12 +35,6 @@
          .price{
             font-size: 1.5em;
            }
-         button{
-            border-radius: 5px;
-            background-color: green;
-            border:green;
-            color:white
-        }
          &:hover{
             //transform:translate(0%,5%);
             transform:scale(1.1,1.1)
@@ -49,11 +43,23 @@
             color:$rating-star-color
          }
     }
+    button{
+        border-radius: 5px;
+        background-color: green;
+        border:green;
+        color:white
+    }
 }
 
 @media screen and (max-width:992px){
     .prod-view {
         padding:5px 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .prodview-item-detail{
+          width:100%;   
+        }
     }
 }
 .cart-add-alert{

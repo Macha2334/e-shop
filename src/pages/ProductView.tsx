@@ -5,6 +5,8 @@ import {FaStar} from "react-icons/fa"
 import {useParams,useHref} from "react-router-dom"
 import { prodDataType } from '../types/productDataType';
 import NavigationBar from '../components/NavigationBar';
+import Loading from '../components/Loading/Loading';
+import AddProductBtn from './AddProductBtn';
 
 type data_type= {
     data:prodDataType,
@@ -48,11 +50,12 @@ const ProductView = () =>{
             <img src={data.data.image} className="prodview-item-image" alt={data.data.title}/>
                 <h2>{data.data.title}</h2>
                 <div className="prodview-price">Price:${data.data.price}</div>
-                <div> {data.data.rating.rate} <FaStar/>  {`(${data.data.rating.count})`}</div>
+                <div> {data.data.rating.rate} <FaStar/>  {`(${data.data.rating.count})`}</div>          
+                <AddProductBtn data={data.data}/>
                 <hr/>
                 <p>{data.data.description}</p>
             </div>
-        </div>): (<div>Loading ....</div>)}
+        </div>): <Loading/>}
         </>
     )
 }

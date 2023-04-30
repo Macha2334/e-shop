@@ -8,6 +8,7 @@ import Product from './Product'
 import {useSelector,useDispatch} from "react-redux"
 import { getProducts,setProducts } from "../redux/productsSlice";
 import { setFilterProducts } from "../redux/productsFilterSlice";
+import Loading from "../components/Loading/Loading"
 
 const Home = () =>{
 const [data,setData] = useState<prodDataType[]>([]);
@@ -47,7 +48,7 @@ useEffect(
                 </>)
             }
             )) :
-                "loading..."
+                <Loading/>
             }
             </div>
         </div>
