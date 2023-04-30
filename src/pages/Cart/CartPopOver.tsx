@@ -7,14 +7,18 @@ import { removeFromCart,clearCart } from "./cartSlice";
 import { prodDataType } from "../../types/productDataType";
 import Table from "react-bootstrap/Table";
 import { useMemo } from "react";
-import {formatNumber} from "../../Utils/Utils"
+import {formatNumber,getOrderNum} from "../../Utils/Utils"
 import  './Cart.scss'
 import { it } from "node:test";
 
 const CartPopOver =(props:any)=>{
     const [open,setOpen] = useState(false);
     const dispatch= useDispatch();
+    getOrderNum();
+    console.log(localStorage)
     const handlePlaceOrder=()=>{
+        //add the order in local storage
+        //var orderDetail ={id:,name:"test", time:"Date 2017-02-03T08:38:04.449Z"};
         setOpen(false);
         dispatch(clearCart());
     }

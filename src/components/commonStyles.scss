@@ -26,6 +26,7 @@ body{
 .cart-icon{
     color:#e5df22;
     cursor: pointer;
+    flex-shrink: 0;
     svg{
         height: 50px;
         width: 50px;
@@ -55,8 +56,16 @@ body{
     justify-content: center;
     height: 38px;
     gap:5px;
+    background-color: white;
+    border-radius: 5px;
+    padding:0px 5px;
     svg{
         height: 38px;
+        color:$base-color;
+    }
+    input{
+        border:none;
+        border-radius: 0px;
     }
 }
 .nav-container{

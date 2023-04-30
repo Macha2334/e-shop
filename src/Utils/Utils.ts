@@ -5,3 +5,9 @@ export const formatNumber=(num:number)=>{
     )
 
 }
+export const getOrderNum = ()=>{
+    if(localStorage){
+        localStorage.setItem("1","test");
+        localStorage.setItem("2","test3");
+    }
+}

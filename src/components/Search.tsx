@@ -59,11 +59,11 @@ const Search = () =>{
     }
     return(
         <Form className="search-bar" onSubmit={handleSubmit} name="searchForm">
-                    
+               
             <Form.Control
                 name="search"
                 type="search"
-                placeholder="Search"
+                placeholder="Search Product"
                 className="me-10"
                 onChange={handleChange}
             />
