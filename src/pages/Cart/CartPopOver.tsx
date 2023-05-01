@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Popover,Button,Modal, Alert } from "react-bootstrap";
+import { Popover,Button,Modal,OverlayTrigger } from "react-bootstrap";
 import {FaShoppingCart} from "react-icons/fa"
 import {FaTrash} from "react-icons/fa"
 import { useDispatch } from "react-redux";
@@ -7,14 +7,14 @@ import { removeFromCart,clearCart } from "./cartSlice";
 import { prodDataType } from "../../types/productDataType";
 import Table from "react-bootstrap/Table";
 import { useMemo } from "react";
-import {formatNumber,getOrderNum} from "../../Utils/Utils"
-import  './Cart.scss'
-import { it } from "node:test";
+import {formatNumber,/*getOrderNum*/} from "../../Utils/Utils"
+import  './Cart.scss';
+import { PopoverHeader,PopoverBody } from "react-bootstrap";
 
 const CartPopOver =(props:any)=>{
     const [open,setOpen] = useState(false);
     const dispatch= useDispatch();
-    getOrderNum();
+    //getOrderNum();
     console.log(localStorage)
     const handlePlaceOrder=()=>{
         //add the order in local storage
@@ -31,6 +31,18 @@ const CartPopOver =(props:any)=>{
                 ) : 0
         ,[props.items]
     )
+    const deleteConfirm = (item:prodDataType)=>{
+        //dispatch(removeFromCart(item));
+        return(
+            <Popover
+                placement="bottom"
+                >
+                <PopoverHeader>Remove From Cart</PopoverHeader>
+                <PopoverBody>
+                    Are you sure you want to remove <b>{item.title}</b> from Cart.
+                </PopoverBody>
+            </Popover>)
+    }
         
     return(
         <>
@@ -57,7 +69,11 @@ const CartPopOver =(props:any)=>{
                                     <td>{formatNumber(item.price)}</td>
                                     <td>{"60%"}</td>
                                     <td>{formatNumber(item.price * 0.6)}</td>
-                                    <td><FaTrash onClick={()=>dispatch(removeFromCart(item))}/></td>
+                                    <td>
+                                        <OverlayTrigger trigger="click"  overlay={deleteConfirm(item)} rootClose>
+                                            <FaTrash />
+                                        </OverlayTrigger>
+                                    </td>
                                 </tr>)
                                 
                             })}
@@ -68,7 +84,9 @@ const CartPopOver =(props:any)=>{
                                 <td>{formatNumber(totalOrderPrice)}</td>
                                 <td>{"60%"}</td>
                                 <td>{formatNumber(totalOrderPrice * 0.6)}</td>
-                                <td><FaTrash onClick={()=>dispatch(clearCart())}/></td>
+                                <td>
+                                <FaTrash onClick={()=>dispatch(clearCart())}/>
+                                </td>
                             </tr>
                         </tbody>
                     </Table>): "You have Nothing in the Cart"}

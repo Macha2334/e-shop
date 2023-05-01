@@ -5,12 +5,16 @@ import Orders from "../pages/Orders"
 import NotFound from "../pages/NotFound"
 import withRoutLayout from "./withRouteLayout"
 import ProductView from "../pages/ProductView"
+import SignUp from "../Login/SignUp"
+import SignIn from "../Login/SignIn"
 const RouteSetp = () =>{
     return(
         <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="home" element={<Home/>}/>
             <Route path="orders" element={<Orders/>}/>
+            <Route path="signup" element={<SignUp/>}/>
+            <Route path="signin" element={<SignIn/>}/>
             <Route path="product/:prodId" element={<ProductView/>}/>
             <Route path="*" element={<NotFound/>}/>
         </Routes> 
