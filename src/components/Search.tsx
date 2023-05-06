@@ -13,7 +13,7 @@ const Search = () =>{
     const prods=useSelector((state:any)=>state.products)
     const [filteredData,setFilteredData]=useState(prods);
     const [filter,setFilter]=useState(false);
-        
+    
     const handleSubmit=(event:any)=>{
         //console.log('inside handle submit');
         const form=document.forms[0];

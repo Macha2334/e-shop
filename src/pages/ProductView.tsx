@@ -44,7 +44,6 @@ const ProductView = () =>{
     
     return(
         <>
-        <NavigationBar/>
         {!data.loading ? (<div className='prod-view'>
             <div className="prodview-item-detail">
             <img src={data.data.image} className="prodview-item-image" alt={data.data.title}/>

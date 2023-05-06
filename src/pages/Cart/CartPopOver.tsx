@@ -10,6 +10,7 @@ import { useMemo } from "react";
 import {formatNumber,/*getOrderNum*/} from "../../Utils/Utils"
 import  './Cart.scss';
 import { PopoverHeader,PopoverBody } from "react-bootstrap";
+import RemoveProductBtn from "../RemoveProductBtn";
 
 const CartPopOver =(props:any)=>{
     const [open,setOpen] = useState(false);
@@ -70,9 +71,7 @@ const CartPopOver =(props:any)=>{
                                     <td>{"60%"}</td>
                                     <td>{formatNumber(item.price * 0.6)}</td>
                                     <td>
-                                        <OverlayTrigger trigger="click"  overlay={deleteConfirm(item)} rootClose>
-                                            <FaTrash />
-                                        </OverlayTrigger>
+                                        <RemoveProductBtn data={item}/>
                                     </td>
                                 </tr>)
                                 
@@ -82,7 +81,7 @@ const CartPopOver =(props:any)=>{
                                 <td></td>
                                 <td>Total</td>
                                 <td>{formatNumber(totalOrderPrice)}</td>
-                                <td>{"60%"}</td>
+                                <td>{''}</td>
                                 <td>{formatNumber(totalOrderPrice * 0.6)}</td>
                                 <td>
                                 <FaTrash onClick={()=>dispatch(clearCart())}/>

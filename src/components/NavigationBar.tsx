@@ -6,11 +6,15 @@ import  SearchItems  from "../components/Search"
 import CartPopOver from "../pages/Cart/CartPopOver";
 import { useState,useEffect,useLayoutEffect } from "react";
 const NavigationBar=()=>{
-    const [menu,setMenu]=useState<any>(0);
+    const [menu,setMenu]=useState<any>('0');
     const navigate=useNavigate();
     const handleNavigation=(e:any,nav:string)=>{
-        //e.target.style.background="red";
         navigate(nav);
+        if(e.target.id === "brand")
+        {
+            setMenu('0');
+            return;
+        }
         setMenu(e.target.id);    
         console.log(e.target.id);  
     }
@@ -41,7 +45,7 @@ const NavigationBar=()=>{
             for(let el=0;el<=allEles.length-1 ; el++){
                 if(allEles[el].id===menu){
                     if(! (allEles[el].id=='brand'))
-                    allEles[el].classList.add("current-nav")
+                        allEles[el].classList.add("current-nav")
                 }else{
                     allEles[el].classList.remove("current-nav")
                 }
@@ -49,16 +53,16 @@ const NavigationBar=()=>{
         }},[menu]
     )
     return(
-        <Navbar bg="dark" expand="lg" variant="dark" collapseOnSelect id="nav-bar">
+        <Navbar bg="dark" expand="md" variant="dark" collapseOnSelect id="nav-bar">
             <Container className="row nav-container">
-                <Navbar.Brand className="col-sm-4 navBar">
-                    <Nav.Link id="brand" onClick={(e:any)=>handleNavigation(e,"/home")}>
-                    <img className="brand-img" src={process.env.PUBLIC_URL+'brand.png'}/>
-                    E - Shop
-                    </Nav.Link>
+                <Navbar.Brand className="col-sm-3 navBar">
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Nav.Link id="brand" onClick={(e:any)=>handleNavigation(e,"/home")}>
+                        <img className="brand-img" src={process.env.PUBLIC_URL+'brand.png'}/>
+                        E - Shop
+                    </Nav.Link>
                 </Navbar.Brand>
-                <Navbar.Collapse className="col-sm-5">
+                <Navbar.Collapse className="col-sm-5 ">
                     <Nav>
                         {NavObj.map(
 
@@ -66,6 +70,7 @@ const NavigationBar=()=>{
                             return(
                                 <Nav.Link id={indx.toString()}
                                     onClick={(e:any)=>handleNavigation(e,item.route)}
+                                    eventKey={(indx+1).toString()}
                                     //active={menu === indx}
                                      >
                                         {item.link}
@@ -75,7 +80,7 @@ const NavigationBar=()=>{
                         )}
                     </Nav>
                 </Navbar.Collapse>
-                <div className="col-sm-3 sc-container">
+                <div className="col-sm-4 sc-container">
                     <SearchItems/>
                     <CartPopOver items={cartItems}/>
                 </div>

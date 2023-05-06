@@ -12,6 +12,8 @@ const SignUp= ()=>{
         e.preventDefault();
         console.log('inside')
         const user=form.username.value;
+        const termsAgree=form.disclaimer.checked;
+        console.log(termsAgree);
         //validate user
         if(user){
             let a=new RegExp(/[a-zA-Z]+[0-9.]*[a-zA-Z]*@[a-zA-Z]+.com/g)
@@ -28,21 +30,24 @@ const SignUp= ()=>{
         const pwd=form.password.value;
         //password validation
         if(pwd){
-            /*let smallValP=new RegExp(/[a-z]{2,}+/g)
+            let smallValP=new RegExp(/[a-z]{2,}/g)
             let smallVal=smallValP.exec(pwd)
-            let capsValP=new RegExp(/[A-Z]{2,}+/g)
+            console.log(smallVal)
+            let capsValP=new RegExp(/[A-Z]{2,}/g)
             let capsVal=capsValP.exec(pwd)
-            let numValP=new RegExp(/[0-9]{2,}+/g)
+            console.log(capsVal)
+            let numValP=new RegExp(/[0-9]{1,}/g)
             let numVal=numValP.exec(pwd)
+            console.log(numVal)
             
             if(!(smallVal!= null&&
             capsVal !=null &&
             numVal!=null)
             ){
-                setRegStatus({status:false,msg: "password length should have atleast 1 cap,1 small and 1 num of characters"});
+                setRegStatus({status:false,msg: "Password should have atleast 2 capital,2 small and 1 digit"});
                 form.password.focus();
                 return;
-            }  */          
+            }            
         }else{
             setRegStatus({status:false,msg: "password field should not be empty"});
             return;
@@ -86,7 +91,7 @@ const SignUp= ()=>{
                     </Form.Group>
                     <Form.Group>
                         <Form.Check
-                            name="desclimer"
+                            name="disclaimer"
                             label="I agree to all statements in Terms of service."
                         />
                         <Button className="btn btn-primary" type="submit">REGISTER</Button>
