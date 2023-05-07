@@ -43,13 +43,12 @@ const SignIn= ()=>{
         return(
             <div className="sign-up mb-20">
                 <h2>Sign In</h2>
-                {(!(logInStatus?.isLoggedIn) && logInStatus?.userName!=='') && 
-                    <Alert variant="danger"><h6>{"Login Failed!!"}</h6></Alert>
-                } 
-                {
-                    (userDetail.userName !== '' && !logInStatus?.isLoggedIn) &&
-                    <Alert variant="danger"><h6>{userDetail.userName} Login Back!!</h6></Alert>
-                }
+                {logInStatus?.isAuthFailed ?
+                    (<Alert variant="danger"><h6>{"Login Failed!!"}</h6></Alert>) :
+                    (userDetail.userName !== '' && !logInStatus?.isLoggedIn) ? (
+                        <Alert variant="danger"><h6>{userDetail.userName} Login Back!!</h6></Alert>
+                    ) : (<></>)
+                    } 
                 <Form name="signup" onSubmit={handleSubmit}>
                     <Form.Group className="row">
                         <Form.Label  className="col-3">

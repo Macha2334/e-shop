@@ -45,14 +45,16 @@ const ProductView = () =>{
     return(
         <>
         {!data.loading ? (<div className='prod-view'>
-            <div className="prodview-item-detail">
-            <img src={data.data.image} className="prodview-item-image" alt={data.data.title}/>
-                <h2>{data.data.title}</h2>
-                <div className="prodview-price">Price:${data.data.price}</div>
-                <div> {data.data.rating.rate} <FaStar/>  {`(${data.data.rating.count})`}</div>          
-                <AddProductBtn data={data.data}/>
-                <hr/>
-                <p>{data.data.description}</p>
+            <div className="prodview-item-detail row" >
+                <img src={data.data.image} className="prodview-item-image col-sm-6" alt={data.data.title}/>
+                <div className='col-sm-6 details'>
+                    <h2>{data.data.title}</h2>
+                    <div className="prodview-price">Price:${data.data.price}</div>
+                    <div> {data.data.rating.rate} <FaStar/>  {`(${data.data.rating.count})`}</div>          
+                    <AddProductBtn data={data.data}/>
+                    <hr/>
+                    <p>{data.data.description}</p>
+                </div>
             </div>
         </div>): <Loading/>}
         </>

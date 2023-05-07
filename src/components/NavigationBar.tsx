@@ -8,6 +8,7 @@ import { useState,useEffect,useLayoutEffect } from "react";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
 import { loggedOut } from "../Login/loginSlice";
 import { UserDetailT } from "../Login/loginSlice";
+import Logo from "../Utils/Logos/Logo";
 
 const NavigationBar=()=>{
     const [menu,setMenu]=useState<any>('0');
@@ -103,7 +104,7 @@ const NavigationBar=()=>{
                 <Navbar.Brand className="col-sm-3 navBar">
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Nav.Link id="brand" onClick={(e:any)=>handleNavigation(e,"/home")}>
-                        <img className="brand-img" src={process.env.PUBLIC_URL+'brand.png'}/>
+                        <Logo size={50}/>
                         E - Shop
                     </Nav.Link>
                 </Navbar.Brand>
@@ -141,7 +142,7 @@ const NavigationBar=()=>{
                     <CartPopOver items={cartItems}/>
                 </div>
                 {isLogin.isLoggedIn ? 
-                    <div className="LogInOut col-sm-1" onClick={(e)=>handleNavigation(e,'/signout',true)} title="Log Out"><FiLogOut color="white"/></div>
+                    <div className="LogInOut col-sm-1" onClick={(e)=>handleNavigation(e,'/signin',true)} title="Log Out"><FiLogOut color="white"/></div>
                     :
                     <div className="LogInOut col-sm-1" onClick={(e)=>handleNavigation(e,'/signin')} title="Log In"><FiLogIn color="white"/></div>
                 }
@@ -150,3 +151,13 @@ const NavigationBar=()=>{
     )
 }
 export default NavigationBar;
+/*<polygon points="5,0 25,25 45,0 45,40 25,25 5,40 5,0"
+                                style={{fill:"aquamarine",stroke:"white",strokeWidth:"2px"}}
+                                />
+                                <line x1="5" y1="50" x2="45" y2="50"
+                                style={{fill:"aquamarine",stroke:"white",strokeWidth:"2px"}}
+                                />
+                                <circle cx="5" cy="45" r="5"
+                                style={{fill:"yellow",stroke:"white",strokeWidth:"2px"}} />
+                                <circle cx="45" cy="45" r="5"
+                                style={{fill:"yellow",stroke:"white",strokeWidth:"2px"}} />*/

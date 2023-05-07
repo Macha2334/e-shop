@@ -45,10 +45,10 @@ export const validateUser = (uname:string,pswd:string) =>{
             let userObj : UserCredT=credObj.find( (item:UserCredT) => item.username===uname && item.password===pswd)
             console.log(userObj)
             //update logged in user Detail
-            return userObj ?  {isLoggedIn:true ,userName:userObj.username} : {isLoggedIn : false ,userName:uname};
+            return userObj ?  {isLoggedIn:true ,userName:userObj.username,isAuthFailed:false} : {isLoggedIn : false ,userName:uname,isAuthFailed:true};
         }catch(e){
             console.log(e);
         }  
-        return {isLoggedIn: false,userName:uname}
+        return {isLoggedIn: false,userName:uname,isAuthFailed:true}
     }
 }

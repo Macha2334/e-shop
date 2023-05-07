@@ -3,12 +3,14 @@ import { createSlice } from "@reduxjs/toolkit";
 export interface UserDetailT{
     userName:any,
     //type:string,
-    isLoggedIn:boolean
+    isLoggedIn:boolean,
+    isAuthFailed:boolean
 }
 export const loginTypeInit : UserDetailT ={
     userName:'',
     //type:'',
-    isLoggedIn:false
+    isLoggedIn:false,
+    isAuthFailed:false
 }
 const loginSlice = createSlice({
     name:"login",

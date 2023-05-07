@@ -3,14 +3,25 @@
     padding:10px 50px;
     .prodview-item-detail{
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
         width:80%;
         height: 50%;
+        padding:20px;
+        gap:10px;
         .prodview-item-image{
             width: 300px;
             height: 400px;
+        }
+        .details{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        div{
+            padding:10px 0px;
         }
         svg{
             color:$rating-star-color
