@@ -1,3 +1,9 @@
+import { UserDetailT } from "../Login/loginSlice"
+
+export type UserCredT = {
+    username:string,
+    password:string
+}
 export const formatNumber=(num:number)=>{
     //format to  2 digits
     return(
@@ -6,10 +12,7 @@ export const formatNumber=(num:number)=>{
 
 }
 export const saveUser = (uname:string,pswd:string)=>{
-    type UserCredT = {
-        username:string,
-        password:string
-    }
+    
     if(localStorage){
         try{
             var oldItems = JSON.parse(localStorage.getItem('creds')||'[]') || [];
@@ -34,16 +37,18 @@ export const saveUser = (uname:string,pswd:string)=>{
         }  
     }
 }
-export const validateUser = (uname:string,pswd:string)=>{
+export const validateUser = (uname:string,pswd:string) =>{
     if(localStorage){
         try{
-            /*localStorage.getItem();
-            setItem("username",uname);
-            localStorage.setItem("password",pswd);*/
-            return true;
+            let creds=localStorage.getItem("creds") ||'';
+            let credObj=JSON.parse(creds);
+            let userObj : UserCredT=credObj.find( (item:UserCredT) => item.username===uname && item.password===pswd)
+            console.log(userObj)
+            //update logged in user Detail
+            return userObj ?  {isLoggedIn:true ,userName:userObj.username} : {isLoggedIn : false ,userName:uname};
         }catch(e){
             console.log(e);
-            return false;
         }  
+        return {isLoggedIn: false,userName:uname}
     }
 }

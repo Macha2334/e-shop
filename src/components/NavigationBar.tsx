@@ -1,56 +1,101 @@
 import { Navbar,Container,Nav } from "react-bootstrap";
 import './commonStyles.scss'
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router";
+import { useSelector,useDispatch } from "react-redux";
+import { useNavigate,useLocation } from "react-router";
 import  SearchItems  from "../components/Search"
 import CartPopOver from "../pages/Cart/CartPopOver";
 import { useState,useEffect,useLayoutEffect } from "react";
+import { FiLogIn, FiLogOut } from "react-icons/fi";
+import { loggedOut } from "../Login/loginSlice";
+import { UserDetailT } from "../Login/loginSlice";
+
 const NavigationBar=()=>{
     const [menu,setMenu]=useState<any>('0');
     const navigate=useNavigate();
-    const handleNavigation=(e:any,nav:string)=>{
+    const location=useLocation();
+    const dispatch=useDispatch();
+    const isLogin:UserDetailT=useSelector((state:any)=>state.login);
+    const cartItems=useSelector((state:any)=>state.cart);
+    
+    console.log(isLogin)
+    
+    const handleNavigation=(e:any,nav:string,isLoggedOut:boolean=false)=>{
+         //log out
+        
         navigate(nav);
+        console.log({isLoggedOut})
+        if(isLoggedOut)   {
+          // console.log('dispatching logout')
+           dispatch(loggedOut(true));            
+       }
         if(e.target.id === "brand")
         {
             setMenu('0');
             return;
         }
-        setMenu(e.target.id);    
-        console.log(e.target.id);  
+        setMenu(e.target.id); 
+       
     }
-    console.log({menu});
+    //console.log({menu});
     const NavObj =[
         {
+            id:0,
             route:'/home',
             link:'Home'
         },
         {
+            id:1,
             route:'/orders',
             link:'Orders'
         },
         {
+            id:2,
             route:'/signup',
             link:'Register'
         },
         {
+            id:3,
             route:'/signin',
             link:'Log In'
         }
     ]
-    const allItems=useSelector((state:any)=>state.products);
-    const cartItems=useSelector((state:any)=>state.cart);
+
+    useEffect(
+        ()=>{
+            let curNav=NavObj.find( (item:any)=>item.route === location.pathname)
+            if(curNav)
+                setMenu(curNav.id);
+        },[location]
+    )
+    /*useEffect(
+        ()=>{   
+            console.log('login changed')  
+            console.log(isLogin)  
+            if(!isLogin.isLoggedIn){
+                dispatch(loggedOut);
+            }
+        },[isLogin]
+    )*/
     useLayoutEffect(
         ()=>{
+            const path=location.pathname;
             const allEles:NodeListOf<Element>=document.querySelectorAll(".nav-link");
             for(let el=0;el<=allEles.length-1 ; el++){
                 if(allEles[el].id===menu){
                     if(! (allEles[el].id=='brand'))
                         allEles[el].classList.add("current-nav")
                 }else{
-                    allEles[el].classList.remove("current-nav")
+                    let curNav=NavObj.find( (item:any)=>item.route === path)
+                    if(curNav?.id.toString() === allEles[el].id){
+                        allEles[el].classList.add("current-nav");
+                    }else{
+                        allEles[el].classList.remove("current-nav")
+                        allEles[el].classList.remove("active")
+                    }
                 }
             
-        }},[menu]
+        }
+    },[menu]
     )
     return(
         <Navbar bg="dark" expand="md" variant="dark" collapseOnSelect id="nav-bar">
@@ -67,24 +112,39 @@ const NavigationBar=()=>{
                         {NavObj.map(
 
                             (item,indx)=>{
-                            return(
-                                <Nav.Link id={indx.toString()}
-                                    onClick={(e:any)=>handleNavigation(e,item.route)}
-                                    eventKey={(indx+1).toString()}
-                                    //active={menu === indx}
-                                     >
-                                        {item.link}
-                                </Nav.Link>
-                            )
+                                if(item.link==="Log In")
+                                    return false;
+                                if(isLogin.isLoggedIn){
+                                    if(item.link==="Register")
+                                        return false;
+                                }else{
+                                    if(item.link==="Orders")
+                                        return false;
+                                }
+                                    
+                                   
+                                    return(
+                                        <Nav.Link id={item.id.toString()}
+                                            onClick={(e:any)=>handleNavigation(e,item.route)}
+                                            eventKey={(item.id+1).toString()}
+                                            //active={menu === indx}
+                                            >
+                                                {item.link}
+                                        </Nav.Link>
+                                    )
                         }
                         )}
                     </Nav>
                 </Navbar.Collapse>
-                <div className="col-sm-4 sc-container">
+                <div className="col-sm-3 sc-container">
                     <SearchItems/>
                     <CartPopOver items={cartItems}/>
                 </div>
-                
+                {isLogin.isLoggedIn ? 
+                    <div className="LogInOut col-sm-1" onClick={(e)=>handleNavigation(e,'/signout',true)} title="Log Out"><FiLogOut color="white"/></div>
+                    :
+                    <div className="LogInOut col-sm-1" onClick={(e)=>handleNavigation(e,'/signin')} title="Log In"><FiLogIn color="white"/></div>
+                }
             </Container>
         </Navbar>
     )

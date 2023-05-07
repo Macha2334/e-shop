@@ -1,5 +1,3 @@
-import NavigationBar from "../components/NavigationBar";
-import withRoutLayout from "../components/withRouteLayout";
 import { useEffect,useState } from "react";
 import './Home.scss';
 import {prodDataType} from "../types/productDataType"
@@ -9,11 +7,13 @@ import {useSelector,useDispatch} from "react-redux"
 import { getProducts,setProducts } from "../redux/productsSlice";
 import { setFilterProducts } from "../redux/productsFilterSlice";
 import Loading from "../components/Loading/Loading"
+import {UserDetailT} from "../Login/loginSlice"
 
 const Home = () =>{
 const [data,setData] = useState<prodDataType[]>([]);
 const prodItems=useSelector((state:any)=>state.productFilter);
-console.log(prodItems)
+const userDetail : UserDetailT=useSelector((state:any)=>state.login);
+//console.log(prodItems)
 const dispatch=useDispatch();
 useEffect(()=>{
     //call the products API
@@ -39,6 +39,7 @@ useEffect(
     return(
         <div className="home-page">
             <Alert><h2>Super Summer Deals! up to 60% Off!!</h2></Alert>
+            {userDetail.isLoggedIn && <Alert><h6>Welcome Back {userDetail.userName}</h6></Alert>}
             <div className="row prod-view">
             {data ?(data?.map((item:prodDataType,indx:any)=>{
                 //console.log('in map',item);

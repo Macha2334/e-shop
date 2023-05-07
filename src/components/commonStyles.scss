@@ -1,5 +1,17 @@
 @import './variables.scss';
 
+.LogInOut{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    width:fit-content;
+    border:1px solid white;
+    border-radius: 10px;
+    padding: 5px;
+    &:hover{
+        transform: scale(1.1);
+    }
+}
 .nav-link
 {
     &:active,&:hover{

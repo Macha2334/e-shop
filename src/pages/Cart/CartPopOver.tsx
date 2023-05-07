@@ -16,7 +16,7 @@ const CartPopOver =(props:any)=>{
     const [open,setOpen] = useState(false);
     const dispatch= useDispatch();
     //getOrderNum();
-    console.log(localStorage)
+    //console.log(localStorage)
     const handlePlaceOrder=()=>{
         //add the order in local storage
         //var orderDetail ={id:,name:"test", time:"Date 2017-02-03T08:38:04.449Z"};
@@ -47,7 +47,7 @@ const CartPopOver =(props:any)=>{
         
     return(
         <>
-            <div className="cart-icon" onClick={()=>setOpen(true)}><FaShoppingCart/><sup>{props.items.length}</sup></div>
+            <div className="cart-icon" title="Cart" onClick={()=>setOpen(true)}><FaShoppingCart/><sup>{props.items.length}</sup></div>
             <Modal show={open} onHide={()=>setOpen(false)}>
                 <Modal.Header closeButton> Cart Details</Modal.Header>
                 <Modal.Body>

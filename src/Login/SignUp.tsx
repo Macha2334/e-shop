@@ -13,7 +13,11 @@ const SignUp= ()=>{
         console.log('inside')
         const user=form.username.value;
         const termsAgree=form.disclaimer.checked;
-        console.log(termsAgree);
+        if(!termsAgree){
+            setRegStatus({status:false,msg: "Please check the Terms and Conditions"});
+            return;
+        }
+        //console.log(termsAgree);
         //validate user
         if(user){
             let a=new RegExp(/[a-zA-Z]+[0-9.]*[a-zA-Z]*@[a-zA-Z]+.com/g)
@@ -32,13 +36,13 @@ const SignUp= ()=>{
         if(pwd){
             let smallValP=new RegExp(/[a-z]{2,}/g)
             let smallVal=smallValP.exec(pwd)
-            console.log(smallVal)
+           // console.log(smallVal)
             let capsValP=new RegExp(/[A-Z]{2,}/g)
             let capsVal=capsValP.exec(pwd)
-            console.log(capsVal)
+            //console.log(capsVal)
             let numValP=new RegExp(/[0-9]{1,}/g)
             let numVal=numValP.exec(pwd)
-            console.log(numVal)
+            //console.log(numVal)
             
             if(!(smallVal!= null&&
             capsVal !=null &&
@@ -54,7 +58,7 @@ const SignUp= ()=>{
         }
         
         const res:any=saveUser(user,pwd);
-        console.log(res)
+        //console.log(res)
         setRegStatus(res);
     }
         return(
