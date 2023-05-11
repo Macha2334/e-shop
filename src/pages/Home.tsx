@@ -91,6 +91,9 @@ useEffect(
                         }
                     </select>
                 </div>
+                <div className="filtered-data">
+                    Filtered - {catFilter.length ===0 ? <span>All</span> : catFilter.map((item:any)=><span>{item}</span>)}
+                </div>
             </div>
             <div className="row prod-view">
                 

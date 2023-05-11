@@ -77,8 +77,13 @@
             display: none;
         }
     }
-
-
+}
+.filtered-data{
+    margin: 5px 0;
+    *{
+        padding:5px;
+        font-weight: 700;
+    }
 }
 
 @media screen and (max-width:992px){
