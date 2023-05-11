@@ -8,6 +8,7 @@ import { getProducts,setProducts } from "../redux/productsSlice";
 import { setFilterProducts } from "../redux/productsFilterSlice";
 import Loading from "../components/Loading/Loading"
 import {UserDetailT} from "../Login/loginSlice"
+import {FaChevronCircleDown} from "react-icons/fa"
 
 const Home = () =>{
 const [data,setData] = useState<prodDataType[]>([]);
@@ -80,7 +81,8 @@ useEffect(
                     onMouseOver={()=>setIsVisibleCatOptions(true)}
                     onClick={()=>setIsVisibleCatOptions(!isVisibleCatOptions)}
                     >
-                        Select Category</button>
+                        Select Category<FaChevronCircleDown style={{marginLeft:"5"}}/>
+                    </button>
                     <select name="cat-select" id="cat-select" className={isVisibleCatOptions ? "show" : "hide"} multiple onChange={handleSelection}>
                         {
                             categories.map(
