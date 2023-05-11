@@ -104,7 +104,7 @@ const NavigationBar=()=>{
                 <Navbar.Brand className="col-sm-3 navBar">
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Nav.Link id="brand" onClick={(e:any)=>handleNavigation(e,"/home")}>
-                        <Logo size={50}/>
+                        <Logo size={50} className="me-10"/>
                         E - Shop
                     </Nav.Link>
                 </Navbar.Brand>

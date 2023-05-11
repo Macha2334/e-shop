@@ -61,6 +61,25 @@
         color:white
     }
 }
+.categoryFilter{
+    position: relative;
+    #cat-select{
+        z-index: 100;
+        width: fit-content;
+        position:absolute;
+        left:0;
+        top:40px;
+        display: none;
+        &.show{
+            display: block;
+        }
+        &.hide{
+            display: none;
+        }
+    }
+
+
+}
 
 @media screen and (max-width:992px){
     .prod-view {
